@@ -14,11 +14,12 @@ void displayInfo();
 
 
 // main entry into the program
-int main() {
-
-    // call the saveInfo function to get and save the eBook information
-    // call the displayInfo function to display the eBook information
-}
+int main()
+{
+    saveInfo();
+    displayInfo();
+    return 0;
+} // end of main function
 
 // get and save the eBook information
 void saveInfo() {
