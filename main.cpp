@@ -22,24 +22,47 @@ int main()
 } // end of main function
 
 // get and save the eBook information
-void saveInfo() {
+void saveInfo()
+{
+    // variables to store title and author information
+    string title;
+    string author;
 
-    // open file to append
+    // create file object and open the file to append
+    ofstream outFile;
+    outFile.open("eBooks.txt", ios::app);
 
     // if (the file was opened successfully)
+    if (outFile.is_open())
+    {
         // enter the title
+        cout << "Title (-1 to stop): ";
+        getline(cin, title);
 
-        // repeat while(the title is not -1)
+        while (title != "-1")
+        {
             // enter the author
+            cout << "Author: ";
+            getline(cin, author);
+
             // write the title and author to the file
-            // get author and title
-        // end repeat
+            outFile << title << '#' << author << endl;
+
+            // get title
+            cout << "Title (-1 to stop): ";
+            getline(cin, title);
+
+        } // end repeat
 
         // close the file
-    // else
+        outFile.close();
+
+    } else
         // display a message indicating that the file could not be opened
+        cout << "File eBooks.txt could not be opened";
+
     // end if
-}
+} // end of saveInfo function
 
 // display the eBook information
 void displayInfo() {
