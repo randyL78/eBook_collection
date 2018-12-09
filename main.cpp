@@ -67,20 +67,43 @@ void saveInfo()
 // display the eBook information
 void displayInfo() {
 
-    // open the file for input
+    // variables to store title and author information
+    string title;
+    string author;
+
+    // create file object and open the file for input
+    ifstream inFile;
+    inFile.open("eBooks.txt");
 
     // if (the file is opened successfully)
+    if (inFile.is_open())
+    {
         // display the heading
-        // read the title and author from the file
+        cout <<  endl << endl << "eBook Collection" << endl;
+        cout << "----------------" << endl;
+
+        // read the first record
+        getline(inFile, title, '#');
+        getline(inFile, author);
 
         // repeat while (it's not the end of the file)
+        while (!inFile.eof())
+        {
             // display the title and author
-            // read the title and author from the file
-        // end repeat
+            cout << title << " by: " << author << endl;
+
+            // read another record
+            getline(inFile, title, '#');
+            getline(inFile, author);
+
+        }  // end repeat
 
         // close the file
-    // else
+        inFile.close();
+
+    } else
         // display a message indicating that the file could not be opened
+        cout << "File eBooks.txt could not be opened";
     // end if
 
-}
+} // end of displayInfo function
